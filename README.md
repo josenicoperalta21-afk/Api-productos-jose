@@ -1,6 +1,114 @@
-# API Productos – Tienda Perú
+# API REST
+## Sistema pra compartir datos de tienda Peru
+**Requerimientos**
+1. instalacion nodejs(v20 o superior)
+2. Acceso a internet (instalar dependencia)
+3. Clone al repositorio, y ejecute ````npminstall````
+4. Requerimos el archivo ```_.env_```
+
+
+```bash
+
+PORT=3000
+DB_HOST=
+DB_PORT=3306
+DB_USER=
+DB_PASSWORD=
+DB_NAME=
+DB_CONNECTION_LIMIT=10
+
+```
+5. Necesitamos la tabla _productos_
+```sql
+CREATE TABLE IF NOT EXISTS productos (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    marca VARCHAR(100) NOT NULL,
+    descripcion VARCHAR(100) NOT NULL,
+    precio VARCHAR(100) NOT NULL,
+    stock VARCHAR(100) NOT NULL DEFAULT 0,
+    create_at DATETIME NOT NULL DEFAULT NOW(),
+    update_at DATETIME NULL
+) ENGINE=INNODB;
+```
+6. Ejecutar el proyetco escribiendo : ```node src/server```
+7. Utlice Postman [Descargar_Postman](https://www.postman.com/downloads/)  o cualquier softwrae similar pra realizar el TEST
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 API REST hecha con **Node.js + Express + MySQL** que administra los módulos de **productos, clientes y proveedores** de la base de datos `tiendaperu`.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Tecnologías
 Node.js · Express 5 · mysql2 · dotenv · nodemon (desarrollo)
