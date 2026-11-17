@@ -1,9 +1,9 @@
 # API REST
-## Sistema pra compartir datos de tienda Peru
+## Sistema para compartir datos de tienda Peru
 **Requerimientos**
 1. instalacion nodejs(v20 o superior)
 2. Acceso a internet (instalar dependencia)
-3. Clone al repositorio, y ejecute ````npminstall````
+3. Clone al repositorio, y ejecute ```npminstall```
 4. Requerimos el archivo ```_.env_```
 
 

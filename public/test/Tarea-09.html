@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bootstrap</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.2/font/bootstrap-icons.min.css"
+    />
+    <style>
+      :root {
+        --azul: #2457d6;
+        --verde: #168765;
+        --texto: #17243a;
+        --gris: #64748b;
+        --borde: #e5ebf4;
+        --fondo: #f3f6fb;
+      }
+
+      body {
+        background: var(--fondo);
+        color: var(--texto);
+        font-family: system-ui, sans-serif;
+        padding-top: 58px;
+      }
+
+      .navbar {
+        position: fixed;
+        inset: 0 0 auto;
+        z-index: 1030;
+        background: white;
+        border-bottom: 1px solid var(--borde);
+      }
+
+      .navbar > .container-fluid, main, header, footer { max-width: 1140px; }
+      .navbar-brand { color: var(--azul); font-weight: 700; }
+
+      .navbar-menu {
+        display: flex;
+        align-items: center;
+        gap: 1.25rem;
+      }
+
+      .navbar-menu a { color: #425675; text-decoration: none; }
+      .navbar-menu a:hover, .navbar-menu a.active { color: var(--azul); }
+
+      header {
+        color: white;
+        background: linear-gradient(120deg, #173b83, #3178dd);
+        border-radius: 12px;
+      }
+
+      .hero-kicker {
+        color: #bed4ff;
+        font-size: .78rem;
+        font-weight: 700;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+      }
+
+      .hero-text { max-width: 620px; color: #e7efff; }
+      main { padding-top: 1rem; }
+
+      .section-heading {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      #reportes {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: .65rem;
+      }
+
+      #reportes > div { width: auto; padding: 0; }
+      #reportes > div > div {
+        height: 100%;
+        padding: .6rem .8rem;
+        background: white;
+        border: 1px solid var(--borde);
+        border-radius: 10px;
+      }
+
+      #reportes strong { margin-left: .35rem; color: var(--azul); }
+
+      .card {
+        border: 1px solid var(--borde);
+        border-radius: 12px;
+      }
+
+      .table th {
+        background: #edf3fc;
+        color: #425675;
+        font-size: .78rem;
+        text-transform: uppercase;
+        letter-spacing: .04em;
+        white-space: nowrap;
+      }
+
+      .table td, .table th { white-space: nowrap; }
+      .table { --bs-table-hover-bg: #f3f7ff; }
+      .table > :not(caption) > * > * { padding: .72rem .65rem; }
+
+      .btn-success { background: var(--verde); border-color: var(--verde); }
+      .btn-success:hover { background: #117252; border-color: #117252; }
+      .search-box { max-width: 320px; }
+
+      .table-summary, footer { color: var(--gris); font-size: .85rem; }
+
+      dialog {
+        border: 0;
+        border-radius: 14px;
+        box-shadow: 0 12px 35px rgba(15,35,70,.25);
+      }
+
+      dialog::backdrop { background: rgba(15,23,42,.55); }
+      .login-dialog { width: 360px; max-width: 92%; }
+      .crud-dialog { width: min(520px, 92%); }
+
+      .avatar {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: #e4edff;
+      }
+
+      @media (min-width: 576px) and (max-width: 991px) {
+        #reportes { grid-template-columns: repeat(2, 1fr); }
+        #reportes > div:last-child { grid-column: 1 / -1; }
+      }
+
+      @media (max-width: 767px) {
+        .section-heading { align-items: flex-start; }
+        .search-box { max-width: none; }
+        .crud-dialog { max-height: 90vh; overflow-y: auto; }
+      }
+
+      @media (max-width: 575px) {
+        body { padding-top: 96px; }
+        .navbar-menu { flex-wrap: wrap; justify-content: flex-end; gap: .35rem .75rem; }
+        .navbar-menu .btn { padding: .25rem .5rem; }
+        #reportes { grid-template-columns: 1fr; }
+        #reportes > div:last-child { grid-column: auto; }
+        header { border-radius: 0 0 16px 16px; }
+        header h1 { font-size: 1.25rem; }
+        .table > :not(caption) > * > * { padding: .7rem .55rem; }
+        .table-summary { align-items: flex-start !important; flex-direction: column; gap: .35rem; }
+        footer > div { flex-direction: column; }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#inicio">TechNova</a>
+        <div class="navbar-menu">
+          <a class="active" aria-current="page" href="#inicio">Inicio</a>
+          <a href="#productos">Productos</a>
+          <a href="#reportes">Reportes</a>
+          <button id="abrirLogin" class="btn btn-primary btn-sm">Iniciar sesión</button>
+        </div>
+      </div>
+    </nav>
+
+    <header id="inicio" class="container px-4 py-3 my-3">
+      <p class="hero-kicker mb-1">TechNova · Administración</p>
+      <h1 class="h3 mb-1">Sistema de Gestión de Productos</h1>
+      <p class="hero-text mb-0">Consulta, registra y organiza el inventario de software, desarrolladores y versiones disponibles.</p>
+    </header>
+
+    <main class="container pb-4">
+      <section class="section-heading mb-3" aria-labelledby="tituloResumen">
+        <div>
+          <h2 id="tituloResumen" class="h5 mb-1">Resumen operativo</h2>
+          <p class="text-secondary mb-0 small">Vista general del catálogo y sus equipos de desarrollo.</p>
+        </div>
+      </section>
+
+      <section id="reportes" class="row g-3 mb-4">
+        <div class="col-md-4">
+          <div><span class="text-secondary">Total de productos</span> <strong id="totalProductos">8</strong></div>
+        </div>
+        <div class="col-md-4">
+          <div><span class="text-secondary">Desarrolladores</span> <strong id="totalDesarrolladores">7</strong></div>
+        </div>
+        <div class="col-md-4">
+          <div><span class="text-secondary">Última actualización</span> <strong>Hoy</strong></div>
+        </div>
+      </section>
+
+      <section id="productos" class="card shadow-sm p-3 p-md-4">
+        <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
+          <div>
+            <h2 class="h4 mb-1">Lista de productos</h2>
+            <p class="text-secondary mb-0">Inventario registrado en el sistema</p>
+          </div>
+          <button id="nuevoProducto" class="btn btn-success">
+            <i class="bi bi-plus-lg me-1"></i> Nuevo producto
+          </button>
+        </div>
+
+        <div class="search-box mb-3">
+          <div class="input-group">
+            <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
+            <input id="buscarProducto" class="form-control" type="search" placeholder="Buscar producto o desarrollador" aria-label="Buscar productos">
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="table table-hover align-middle mb-0">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Producto</th>
+                <th>Tamaño</th>
+                <th>Desarrollador</th>
+                <th>Versión</th>
+                <th class="text-center">Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="tablaProductos">
+              <tr><td>1</td><td>Software X</td><td>100 MB</td><td>Microsoft</td><td>2.0</td><td class="text-center"><button class="btn btn-sm btn-outline-primary editar"><i class="bi bi-pencil-square"></i></button> <button class="btn btn-sm btn-outline-danger eliminar"><i class="bi bi-trash"></i></button></td></tr>
+              <tr><td>2</td><td>Cloud Manager</td><td>250 MB</td><td>Amazon</td><td>3.1</td><td class="text-center"><button class="btn btn-sm btn-outline-primary editar"><i class="bi bi-pencil-square"></i></button> <button class="btn btn-sm btn-outline-danger eliminar"><i class="bi bi-trash"></i></button></td></tr>
+              <tr><td>3</td><td>Cyber Shield</td><td>85 MB</td><td>TechNova</td><td>1.8</td><td class="text-center"><button class="btn btn-sm btn-outline-primary editar"><i class="bi bi-pencil-square"></i></button> <button class="btn btn-sm btn-outline-danger eliminar"><i class="bi bi-trash"></i></button></td></tr>
+              <tr><td>4</td><td>Data Center</td><td>420 MB</td><td>Oracle</td><td>4.0</td><td class="text-center"><button class="btn btn-sm btn-outline-primary editar"><i class="bi bi-pencil-square"></i></button> <button class="btn btn-sm btn-outline-danger eliminar"><i class="bi bi-trash"></i></button></td></tr>
+              <tr><td>5</td><td>Office Suite</td><td>300 MB</td><td>Microsoft</td><td>6.2</td><td class="text-center"><button class="btn btn-sm btn-outline-primary editar"><i class="bi bi-pencil-square"></i></button> <button class="btn btn-sm btn-outline-danger eliminar"><i class="bi bi-trash"></i></button></td></tr>
+              <tr><td>6</td><td>Project Pro</td><td>180 MB</td><td>Google</td><td>2.5</td><td class="text-center"><button class="btn btn-sm btn-outline-primary editar"><i class="bi bi-pencil-square"></i></button> <button class="btn btn-sm btn-outline-danger eliminar"><i class="bi bi-trash"></i></button></td></tr>
+              <tr><td>7</td><td>Secure VPN</td><td>75 MB</td><td>Nord Systems</td><td>1.9</td><td class="text-center"><button class="btn btn-sm btn-outline-primary editar"><i class="bi bi-pencil-square"></i></button> <button class="btn btn-sm btn-outline-danger eliminar"><i class="bi bi-trash"></i></button></td></tr>
+              <tr><td>8</td><td>Finance App</td><td>220 MB</td><td>FinTech SA</td><td>5.0</td><td class="text-center"><button class="btn btn-sm btn-outline-primary editar"><i class="bi bi-pencil-square"></i></button> <button class="btn btn-sm btn-outline-danger eliminar"><i class="bi bi-trash"></i></button></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="d-flex justify-content-between align-items-center border-top pt-3 mt-2 table-summary">
+          <span id="resumenTabla" aria-live="polite">Mostrando 8 productos</span>
+          <span><i class="bi bi-check-circle-fill text-success me-1"></i>Inventario actualizado</span>
+        </div>
+      </section>
+    </main>
+
+    <footer class="container border-top py-3">
+      <div class="d-flex flex-wrap justify-content-between align-items-start gap-3">
+        <div>
+          <h2 class="h6 mb-1">Fuentes de información</h2>
+          <p class="mb-0">Inventario interno de TechNova y datos demostrativos utilizados para administrar el catálogo de software.</p>
+        </div>
+        <span class="text-nowrap">© 2026 TechNova · Gestión de productos</span>
+      </div>
+    </footer>
+
+    <dialog id="loginDialog" class="login-dialog p-0">
+      <div class="p-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h2 class="h5 mb-0">Iniciar sesión</h2>
+          <button type="button" class="btn-close cerrarLogin"></button>
+        </div>
+        <div class="text-center mb-3">
+          <div class="avatar d-inline-flex align-items-center justify-content-center">
+            <i class="bi bi-person fs-4 text-primary"></i>
+          </div>
+        </div>
+        <form>
+          <label class="form-label">Correo electrónico</label>
+          <input class="form-control mb-3" type="email" placeholder="usuario@empresa.com">
+          <label class="form-label">Contraseña</label>
+          <input class="form-control mb-3" type="password" placeholder="••••••••">
+          <button type="button" class="btn btn-primary w-100 cerrarLogin">Ingresar</button>
+        </form>
+      </div>
+    </dialog>
+
+    <dialog id="crudDialog" class="crud-dialog p-0">
+      <div class="p-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h2 id="tituloCrud" class="h5 mb-0">Nuevo producto</h2>
+          <button type="button" class="btn-close cerrarCrud"></button>
+        </div>
+        <form id="formProducto">
+          <div class="row g-3">
+            <div class="col-md-6"><label class="form-label">Producto</label><input id="nombreProducto" class="form-control" placeholder="Nombre"></div>
+            <div class="col-md-6"><label class="form-label">Versión</label><input id="versionProducto" class="form-control" placeholder="1.0"></div>
+            <div class="col-md-6"><label class="form-label">Tamaño</label><input id="tamanoProducto" class="form-control" placeholder="100 MB"></div>
+            <div class="col-md-6"><label class="form-label">Desarrollador</label><input id="desarrolladorProducto" class="form-control" placeholder="Empresa"></div>
+          </div>
+          <div class="d-flex justify-content-end gap-2 mt-4">
+            <button type="button" class="btn btn-light cerrarCrud">Cancelar</button>
+            <button type="submit" class="btn btn-success">Guardar</button>
+          </div>
+        </form>
+      </div>
+    </dialog>
+
+    <script>
+      const loginDialog = document.getElementById("loginDialog");
+      const crudDialog = document.getElementById("crudDialog");
+      const tabla = document.getElementById("tablaProductos");
+      const formulario = document.getElementById("formProducto");
+      let filaActual = null;
+
+      document.getElementById("abrirLogin").onclick = () => loginDialog.showModal();
+      document.querySelectorAll(".cerrarLogin").forEach(b => b.onclick = () => loginDialog.close());
+      document.querySelectorAll(".cerrarCrud").forEach(b => b.onclick = () => crudDialog.close());
+
+      document.getElementById("nuevoProducto").onclick = () => {
+        filaActual = null;
+        document.getElementById("tituloCrud").textContent = "Nuevo producto";
+        formulario.reset();
+        crudDialog.showModal();
+      };
+
+      tabla.onclick = evento => {
+        const boton = evento.target.closest("button");
+        if (!boton) return;
+
+        const fila = boton.closest("tr");
+        if (boton.classList.contains("eliminar")) {
+          fila.remove();
+          actualizarResumen();
+        } else if (boton.classList.contains("editar")) {
+          editarProducto(fila);
+        }
+      };
+
+      formulario.onsubmit = evento => {
+        evento.preventDefault();
+        const valores = ["nombreProducto", "tamanoProducto", "desarrolladorProducto", "versionProducto"]
+          .map(id => document.getElementById(id).value);
+
+        if (filaActual) {
+          valores.forEach((valor, indice) => filaActual.cells[indice + 1].textContent = valor);
+        } else {
+          const fila = document.createElement("tr");
+          const id = Math.max(0, ...[...tabla.rows].map(fila => Number(fila.cells[0].textContent))) + 1;
+          fila.innerHTML = `<td>${id}</td>${valores.map(valor => `<td>${valor}</td>`).join("")}<td class="text-center"><button class="btn btn-sm btn-outline-primary editar"><i class="bi bi-pencil-square"></i></button> <button class="btn btn-sm btn-outline-danger eliminar"><i class="bi bi-trash"></i></button></td>`;
+          tabla.appendChild(fila);
+        }
+        actualizarResumen();
+        crudDialog.close();
+      };
+
+      function editarProducto(fila) {
+        filaActual = fila;
+        document.getElementById("tituloCrud").textContent = "Editar producto";
+        ["nombreProducto", "tamanoProducto", "desarrolladorProducto", "versionProducto"]
+          .forEach((id, indice) => document.getElementById(id).value = fila.cells[indice + 1].textContent);
+        crudDialog.showModal();
+      }
+
+      document.getElementById("buscarProducto").oninput = evento => {
+        const termino = evento.target.value.trim().toLowerCase();
+        document.querySelectorAll("#tablaProductos tr").forEach(fila => {
+          fila.hidden = !fila.textContent.toLowerCase().includes(termino);
+        });
+      };
+
+      function actualizarResumen() {
+        const filas = [...document.querySelectorAll("#tablaProductos tr")];
+        const desarrolladores = new Set(filas.map(fila => fila.cells[3].textContent.trim()).filter(Boolean));
+        document.getElementById("resumenTabla").textContent = `Mostrando ${filas.length} ${filas.length === 1 ? "producto" : "productos"}`;
+        document.getElementById("totalProductos").textContent = filas.length;
+        document.getElementById("totalDesarrolladores").textContent = desarrolladores.size;
+      }
+    </script>
+  </body>
+</html>
