@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bootstrap</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.2/font/bootstrap-icons.min.css"
+    />
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar Sticky top md:navbar-expand bg-1">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button
+          class="btn-icon navbar-toggler"
+          type="button"
+          data-bs-toggle="drawer"
+          data-bs-target="#navbarDrawer"
+          aria-controls="navbarDrawer"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon" aria-hidden="true"></span>
+        </button>
+        <dialog
+          class="drawer drawer-end"
+          tabindex="-1"
+          id="navbarDrawer"
+          aria-labelledby="navbarDrawerLabel"
+        >
+          <div class="drawer-header">
+            <h5 class="drawer-title" id="navbarDrawerLabel">Menu</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="drawer"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="drawer-body mb-2 md:mb-0">
+            <ul class="nav navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item">
+                <button
+                  class="nav-link"
+                  type="button"
+                  data-bs-toggle="menu"
+                  aria-expanded="false"
+                >
+                  Menu
+                </button>
+                <div class="menu">
+                  <a class="menu-item" href="#">Action</a>
+                  <a class="menu-item" href="#">Another action</a>
+                  <hr class="menu-divider" />
+                  <a class="menu-item" href="#">Something else here</a>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+              </li>
+            </ul>
+            <form class="hstack gap-2" role="search">
+              <input
+                class="form-control"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <button class="btn-solid btn-icon theme-secondary" type="submit">
+                <i class="bi bi-search"></i>
+              </button>
+            </form>
+          </div>
+        </dialog>
+      </div>
+    </nav>
+    <!-- FIN DEL NAVBAR -->
+    <div class="container">
+      <!-- Por detras funcione con flebox -->
+      <!-- row = fila -->
+      <!-- col = column(columna) -->
+      <div class="row">
+        <div class="md:col-4">
+          <p class="fg-danger">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad veniam
+            esse incidunt quam saepe culpa aspernatur odit molestias repellat
+            fugit, dolor doloremque laborum nam commodi, nesciunt natus nemo,
+            quae optio. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Doloremque numquam aliquam vero ad quae, eaque reprehenderit
+            exercitationem provident quidem id dolore cum doloribus expedita at
+            eum voluptatem. Fugit, voluptatem voluptatum! Lorem ipsum dolor sit
+            amet, consectetur adipisicing elit. Eos harum commodi quisquam quia
+            distinctio in! Facilis ad incidunt est maxime ex quas, dolores,
+            laboriosam doloremque neque, consequatur veniam asperiores itaque.
+          </p>
+        </div>
+        <div class="md:col-4">
+          <p class="fg-primary">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad veniam
+            esse incidunt quam saepe culpa aspernatur odit molestias repellat
+            fugit, dolor doloremque laborum nam commodi, nesciunt natus nemo,
+            quae optio. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Doloremque numquam aliquam vero ad quae, eaque reprehenderit
+            exercitationem provident quidem id dolore cum doloribus expedita at
+            eum voluptatem. Fugit, voluptatem voluptatum! Lorem ipsum dolor sit
+            amet, consectetur adipisicing elit. Eos harum commodi quisquam quia
+            distinctio in! Facilis ad incidunt est maxime ex quas, dolores,
+            laboriosam doloremque neque, consequatur veniam asperiores itaque.
+          </p>
+        </div>
+        <div class="md:col-4">
+          <p class="fg-success">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad veniam
+            esse incidunt quam saepe culpa aspernatur odit molestias repellat
+            fugit, dolor doloremque laborum nam commodi, nesciunt natus nemo,
+            quae optio. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Doloremque numquam aliquam vero ad quae, eaque reprehenderit
+            exercitationem provident quidem id dolore cum doloribus expedita at
+            eum voluptatem. Fugit, voluptatem voluptatum! Lorem ipsum dolor sit
+            amet, consectetur adipisicing elit. Eos harum commodi quisquam quia
+            distinctio in! Facilis ad incidunt est maxime ex quas, dolores,
+            laboriosam doloremque neque, consequatur veniam asperiores itaque.
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="md:col-8">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga,
+            repellat deleniti beatae et aliquid laboriosam rerum consectetur
+            animi repellendus cupiditate similique facere. Quibusdam debitis
+            dicta, laudantium laborum eius dolor consequuntur.lorem Lorem ipsum
+            dolor sit amet consectetur adipisicing elit. Distinctio optio
+            placeat deserunt qui doloribus ducimus sed mollitia esse totam
+            harum, alias labore nesciunt expedita eveniet sint cumque
+            consequatur molestias tenetur.
+          </p>
+        </div>
+        <div class="md:col-4">
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa
+            dolorum deleniti doloribus cum ea vel dolores recusandae saepe, nam,
+            magni beatae quae eos at esse incidunt architecto a impedit
+            reprehenderit?
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="table-responsive">
+          <table class="table">
+<thead>
+  <tr>
+    <th>ID</th>
+    <th>Nombre</th>
+    <th>Tamaño</th>
+    <th>Desarrollador</th>
+    <tr>Version</tr>
+  </tr>
+</thead>
+<tbody>
+  (tr>(td*5))*10
+<!-- {} contenido -->
+  <!-- * repeticiones -->
+   <!-- $ incrementales -->
+  <!-- (tr>(td{$}+td{Software X}+td{100 Mb}+td{Microsoft}+td{2.0}))*10 -->
+     <tr>
+      <td>1</td>
+      <td>Software X</td>
+      <td>100 Mb</td>
+      <td>Microsoft</td>
+      <td>2.0</td>
+     </tr>
+     <tr>
+      <td>2</td>
+      <td>Software X</td>
+      <td>100 Mb</td>
+      <td>Microsoft</td>
+      <td>2.0</td>
+     </tr>
+     <tr>
+      <td>3</td>
+      <td>Software X</td>
+      <td>100 Mb</td>
+      <td>Microsoft</td>
+      <td>2.0</td>
+     </tr>
+     <tr>
+      <td>4</td>
+      <td>Software X</td>
+      <td>100 Mb</td>
+      <td>Microsoft</td>
+      <td>2.0</td>
+     </tr>
+     <tr>
+      <td>5</td>
+      <td>Software X</td>
+      <td>100 Mb</td>
+      <td>Microsoft</td>
+      <td>2.0</td>
+     </tr>
+     <tr>
+      <td>6</td>
+      <td>Software X</td>
+      <td>100 Mb</td>
+      <td>Microsoft</td>
+      <td>2.0</td>
+     </tr>
+     <tr>
+      <td>7</td>
+      <td>Software X</td>
+      <td>100 Mb</td>
+      <td>Microsoft</td>
+      <td>2.0</td>
+     </tr>
+     <tr>
+      <td>8</td>
+      <td>Software X</td>
+      <td>100 Mb</td>
+      <td>Microsoft</td>
+      <td>2.0</td>
+     </tr>
+     <tr>
+      <td>9</td>
+      <td>Software X</td>
+      <td>100 Mb</td>
+      <td>Microsoft</td>
+      <td>2.0</td>
+     </tr>
+     <tr>
+      <td>10</td>
+      <td>Software X</td>
+      <td>100 Mb</td>
+      <td>Microsoft</td>
+      <td>2.0</td>
+     </tr>
+</tbody>
+<tfoot>
+   <tr>
+    <th>ID</th>
+    <th>Nombre</th>
+    <th>Tamaño</th>
+    <th>Desarrollador</th>
+    <tr>Version</tr>
+  </tr>
+</tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

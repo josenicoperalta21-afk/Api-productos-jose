@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      * {
+        padding: 0px;
+        margin: 0px;
+        border: 0px;
+        font-family: "Times New Roman", Times, serif;
+        font-weight: normal;
+      }
+      .contenedor {
+        width: 90%;
+        margin: 0 auto;
+        background-color: antiquewhite;
+        padding: 0.5rem;
+        text-align: center;
+      }
+      .tarjeta {
+        padding: 1rem; /*Tamaño <M> */
+        width: 350px;
+        background-color: aqua;
+        display: inline-block;
+        border-radius: 10px;
+        margin-bottom: 0.25rem; /*Separacion*/
+      }
+
+      .tarjeta a {
+        text-decoration: none;
+        font-size: 12px;
+      }
+
+      .tarjeta a:hover {
+        text-decoration: underline;
+      }
+
+      .tarjeta h5 {
+        font-style: italic;
+        margin-bottom: 0.25rem;
+      }
+    </style>
+    <select name="select-carreras" id="select-carreras" class="select">
+      <option value="">Mostrar todas</option>
+      <option value="Ingenieria de Software">Ingenieria de software</option>
+      <option value="Diseño Grafico Digital">Diseño Grafico Digital</option>
+      <option value="Administracion industrial">
+        Administracion industrial
+      </option>
+    </select>
+    <div class="contenedor"></div>
+
+    <script>
+      /*Imaginemos que los datos para la tarjeas vienen de una cpnsulta 
+      como esta informacion ¿Como las renderizamos?*/
+      const alumnos = [
+        {
+          apellidos: "Peralta",
+          nombres: "Nicolas",
+          carrera: "Ingenieria de Software",
+          telefono: "908908098",
+          correo: "joseperlita4@gmail.com",
+        },
+        {
+          apellidos: "García",
+          nombres: "Andrés",
+          carrera: "Ingenieria de Software",
+          telefono: "900000005",
+          correo: "andres.garcia@example.com",
+        },
+        {
+          apellidos: "Rojas",
+          nombres: "Camila",
+          carrera: "Diseño Grafico Digital",
+          telefono: "900000001",
+          correo: "camila.rojas@example.com",
+        },
+        {
+          apellidos: "Vargas",
+          nombres: "Mateo",
+          carrera: "Administracion industrial",
+          telefono: "900000002",
+          correo: "mateo.vargas@example.com",
+        },
+        {
+          apellidos: "Quispe",
+          nombres: "Lucia",
+          carrera: "Diseño Grafico Digital",
+          telefono: "900000003",
+          correo: "lucia.quispe@example.com",
+        },
+        {
+          apellidos: "Salazar",
+          nombres: "Diego",
+          carrera: "Administracion industrial",
+          telefono: "900000004",
+          correo: "diego.salazar@example.com",
+        },
+      ];
+
+      const contenedor = document.querySelector(".contenedor");
+      const selector = document.getElementById("select-carreras");
+
+      //Evento (¿Cuando ejecutemos las instrucciones?)
+      selector.addEventListener("change", function () {
+        renderizarTarjetas(selector.value);
+      });
+      //CONTINUAMOS
+      //Manejo de DOM Document Object Model
+      //Esta funcion requiere el nombre de una carrea (opcional), aplicar
+      // /e lfiltro con el nombre d ela carrea, en caso este vacion mostrar tdo
+      function renderizarTarjetas(carrera = "") {
+        let listaFiltrada = [];
+        contenedor.innerHTML = "";
+        //Paso 01- Recorrer tood el arreglo
+        /*
+        if (carrera.trim() === "") {
+          listaFiltrada = alumnos;
+        } else {
+          listaFiltrada = alumnos.filter((a) => a.carrera == carrera);
+        */
+        /*Operador ternario*/
+        listaFiltrada =
+          carrera.trim() === ""
+            ? alumnos
+            : alumnos.filter((a) => a.carrera == carrera);
+
+        //pASO 01 - Recorrer tdod el arreglo
+        listaFiltrada.forEach((alumno) => {
+          const nuevaTarjeta = `
+                  <div class="tarjeta">
+                  <h4>${alumno.apellidos} ${alumno.nombres}</h4>
+                  <h5>${alumno.carrera}</h5>
+                  <a href="tel : ${alumno.telefono}:">Contactar</a>
+                  <a href="mailto : ${alumno.correo}">Enviar Correo</a>
+                  </div>
+          `;
+
+          contenedor.innerHTML += nuevaTarjeta;
+        });
+      }
+
+      renderizarTarjetas();
+    </script>
+  </body>
+</html>
