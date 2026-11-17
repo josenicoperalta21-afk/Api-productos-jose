@@ -40,7 +40,7 @@ const errorServidor = (e, res) => {
 const listarProveedores = async (req, res) => {
   try {
     const [proveedores] = await pool.query(
-      `SELECT * FROM proveedores ORDER BY id DESC`
+      `SELECT * FROM proveedores ORDER BY id ASC`,
     );
     res.status(200).json({
       ok: true,
@@ -60,7 +60,7 @@ const obtenerProveedores = async (req, res) => {
 
     const [registro] = await pool.execute(
       `SELECT * FROM proveedores WHERE id = ?`,
-      [id]
+      [id],
     );
     if (registro.length === 0) {
       return res.status(404).json({
@@ -90,7 +90,7 @@ const crearProveedores = async (req, res) => {
     const [registro] = await pool.execute(
       `INSERT INTO proveedores (razonsocial, contacto, ruc, direccion)
        VALUES (?, ?, ?, ?)`,
-      [razonsocial, contacto, String(ruc).trim(), direccion]
+      [razonsocial, contacto, String(ruc).trim(), direccion],
     );
     res.status(201).json({ ok: true, id: registro.insertId });
   } catch (e) {
@@ -121,7 +121,7 @@ const actualizarProveedores = async (req, res) => {
 
     const [existe] = await pool.execute(
       `SELECT id FROM proveedores WHERE id = ?`,
-      [id]
+      [id],
     );
     if (existe.length === 0) {
       return res.status(404).json({
@@ -133,7 +133,7 @@ const actualizarProveedores = async (req, res) => {
     const { razonsocial, contacto, ruc, direccion } = req.body;
     const [resultado] = await pool.execute(
       `UPDATE proveedores SET razonsocial=?, contacto=?, ruc=?, direccion=? WHERE id=?`,
-      [razonsocial, contacto, String(ruc).trim(), direccion, id]
+      [razonsocial, contacto, String(ruc).trim(), direccion, id],
     );
     res.status(200).json({ ok: true, filasAfectadas: resultado.affectedRows });
   } catch (e) {
@@ -155,7 +155,7 @@ const eliminarProveedores = async (req, res) => {
 
     const [registro] = await pool.execute(
       `SELECT id FROM proveedores WHERE id = ?`,
-      [id]
+      [id],
     );
     if (registro.length === 0) {
       return res.status(404).json({

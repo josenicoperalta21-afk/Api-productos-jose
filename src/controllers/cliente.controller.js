@@ -5,7 +5,13 @@ const { pool } = require("../config/database"); //Importar la conexion a la base
 const CAMPOS = "id,apellidos,nombres,telefono,direccion,email";
 
 //Validamos los datos que llegan desde el cliente antes de guardar o actualizar
-const validarCampos = ({ apellidos, nombres, telefono, direccion, email } = {}) => {
+const validarCampos = ({
+  apellidos,
+  nombres,
+  telefono,
+  direccion,
+  email,
+} = {}) => {
   const errores = [];
 
   if (!apellidos || apellidos.trim() === "")
@@ -27,9 +33,9 @@ const validarCampos = ({ apellidos, nombres, telefono, direccion, email } = {}) 
 const listarClientes = async (req, res) => {
   try {
     const [clientes] = await pool.query(
-      `SELECT * FROM clientes ORDER BY id DESC`
+      `SELECT * FROM clientes ORDER BY id ASC`,
     );
-    res.status(200).json({
+    +res.status(200).json({
       ok: true,
       total: clientes.length,
       data: clientes,
@@ -59,7 +65,7 @@ const obtenerClientes = async (req, res) => {
     //Utilizamos EXECUTE porque pasaremos parametros (evita SQL Injection)
     const [registro] = await pool.execute(
       `SELECT * FROM clientes WHERE id = ?`,
-      [id]
+      [id],
     );
 
     if (registro.length === 0) {
@@ -153,7 +159,7 @@ const actualizarClientes = async (req, res) => {
     //Verificamos primero si el cliente existe
     const [existe] = await pool.execute(
       `SELECT id FROM clientes WHERE id = ?`,
-      [id]
+      [id],
     );
     if (existe.length === 0) {
       return res.status(404).json({
@@ -205,7 +211,7 @@ const eliminarClientes = async (req, res) => {
 
     const [registro] = await pool.execute(
       `SELECT * FROM clientes WHERE id = ?`,
-      [id]
+      [id],
     );
 
     if (registro.length === 0) {
