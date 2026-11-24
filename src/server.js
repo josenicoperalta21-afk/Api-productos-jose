@@ -6,10 +6,10 @@ const { probarConexion } = require("./config/database");
 const iniciarServidor = async () => {
   try {
     await probarConexion();
-    console.log("Conexión a MYSQL exitosa");
+    console.log("Conexión a MYSQL exitosa :3");
 
     app.listen(port, () => {
-      console.log(`Servidor iniciado en http://localhost:${port}`);
+      console.log(`Servidor iniciado en el puerto http://localhost:${port}`);
     });
   } catch (e) {
     console.error("no podemos conectarnos a MYSQL:", e.message);

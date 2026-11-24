@@ -30,8 +30,9 @@ CREATE TABLE IF NOT EXISTS productos (
     update_at DATETIME NULL
 ) ENGINE=INNODB;
 ```
-6. Ejecutar el proyetco escribiendo : ```node src/server```
-7. Utlice Postman [Descargar_Postman](https://www.postman.com/downloads/)  o cualquier softwrae similar pra realizar el TEST
+6. Ejecutar el proyecto con `npm start` o `npm run dev`.
+7. Abrir `http://localhost:3000/` para usar la interfaz de mantenimiento de productos. También se puede abrir `public/index.html` con Live Server; la API permite solicitudes desde Live Server en `localhost` y `127.0.0.1`.
+8. Para probar los endpoints manualmente, utilice Postman o una herramienta similar.
 
 
 

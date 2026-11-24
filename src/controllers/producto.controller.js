@@ -8,13 +8,16 @@ const { pool } = require("../config/database"); //Importar la conexion a la base
 const CAMPOS = "id,marca,descripcion,precio,stock";
 //todas las funciones deben ser asincronas(tardaran un timepo en ser resultadas)
 //milisegunod,segundno (1000=1seg)
-const validarCampos = ({ marca, descripcion, precio, stock } = {}) => {
+const validarCampos = (datos = {}) => {
+  const { marca, descripcion, precio, stock } = datos || {};
   const errores = [];
-  if (marca.trim() === "") errores.push("La marca es obligatoria");
-  if (descripcion.trim() === "") errores.push("La descripción es necesaria");
-  if (precio === undefined || isNaN(precio) || precio <= 0)
+  if (typeof marca !== "string" || marca.trim() === "")
+    errores.push("La marca es obligatoria");
+  if (typeof descripcion !== "string" || descripcion.trim() === "")
+    errores.push("La descripción es necesaria");
+  if (typeof precio !== "number" || !Number.isFinite(precio) || precio < 0)
     errores.push("Verifique el precio");
-  if (stock === undefined || !Number.isInteger(stock) || Number(stock) < 0)
+  if (!Number.isInteger(stock) || stock < 0)
     errores.push("Error en el stock");
 
   //Es posible tener mas de un error
@@ -44,7 +47,7 @@ const obtenerProductos = async (req, res) => {
   try {
     //Req.params => representa lso parametros enviado por l aURL
     const id = Number(req.params.id);
-    if (id <= 0) {
+    if (!Number.isInteger(id) || id <= 0) {
       return res.status(400).json({
         ok: false,
         message: "El ID no puede ser negativo o cero",
@@ -100,7 +103,14 @@ VALUES(?,?,?,?)`;
     ]);
     res.status(201).json({
       ok: true,
-      id: registro.insertId,
+      message: "Producto registrado correctamente",
+      data: {
+        id: registro.insertId,
+        marca,
+        descripcion,
+        precio,
+        stock,
+      },
     });
   } catch (e) {
     console.error(e);
@@ -113,7 +123,7 @@ VALUES(?,?,?,?)`;
 const actualizarProductos = async (req, res) => {
   try {
     const id = Number(req.params.id);
-    if (id <= 0) {
+    if (!Number.isInteger(id) || id <= 0) {
       return res.status(400).json({
         ok: false,
         message: "El ID no puede ser negativo o cero",
@@ -163,7 +173,7 @@ const eliminarProductos = async (req, res) => {
   try {
     const id = Number(req.params.id);
 
-    if (id <= 0) {
+    if (!Number.isInteger(id) || id <= 0) {
       return res.status(400).json({
         ok: false,
         message: "El ID no puede ser negativo o cero",
