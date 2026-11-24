@@ -68,3 +68,23 @@ VALUES
 SELECT * FROM productos;
 SELECT * FROM clientes;
 SELECT * FROM proveedores;
+
+CREATE TABLE IF NOT EXISTS tiendas (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    ciudad VARCHAR(150) NOT NULL,
+    direccion VARCHAR(150) NOT NULL,
+    telefono VARCHAR(15) NOT NULL,
+    responsable VARCHAR(150) NOT NULL,
+    apertura varchar(150) NOT NULL ,
+    cierre VARCHAR(200) NOT NULL,
+    create_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME NULL ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=INNODB;
+
+
+INSERT INTO tiendas
+(ciudad,direccion,telefono,responsable,apertura,cierre)
+VALUES
+('Ica', 'Plaza de Armas', '9876543321', 'Juan Gomez', '22/11/2026', '29/11/2026'),
+('Lima', 'Av. Javier Prado 250', '9876543322', 'María López', '22/11/2026', '29/11/2026'),
+('Chincha', 'Av. Grau 450', '9876543323', 'Carlos Pérez', '22/11/2026', '29/11/2026');
